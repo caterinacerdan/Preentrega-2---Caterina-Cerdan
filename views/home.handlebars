@@ -1,0 +1,19 @@
+<h1>Lista de productos</h1>
+{{#if products.length}}
+  {{#each products}}
+    <div class="card">
+      <h3>{{title}} — ${{price}}</h3>
+      <p><b>Código:</b> {{code}} | <b>Stock:</b> {{stock}} | <b>Estado:</b> {{#if status}}Activo{{else}}Inactivo{{/if}}</p>
+      <p><b>Categoría:</b> {{category}}</p>
+      <p>{{description}}</p>
+      <div>
+        {{#each thumbnails}}
+          <img class="thumb" src="{{this}}" alt="thumb">
+        {{/each}}
+      </div>
+      <small>ID: {{id}}</small>
+    </div>
+  {{/each}}
+{{else}}
+  <p>No hay productos.</p>
+{{/if}}

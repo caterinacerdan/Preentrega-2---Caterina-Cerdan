@@ -3,19 +3,31 @@ import path from "path";
 import { fileURLToPath } from "url";
 import handlebars from "express-handlebars";
 import { Server } from "socket.io";
+import dotenv from "dotenv";
+import connectMongoDB from "./config/db.js";
+
 
 import buildViewsRouter from "./routes/views.router.js";
-import ProductManager from "./managers/productManager.js"; // OJO: carpeta "managers"
+import BuildProductsRouter from "./routes/api.products.router.js";
+import ProductManager from "./managers/productManager.js"; 
+
+//inicializamos las variables de entorno
+
+dotenv.config()
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 8080;
+const PORT = process.env.PORT;
+
+connectMongoDB();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
+
+
 
 //handlebars
 app.engine("handlebars", handlebars.engine({
@@ -28,7 +40,9 @@ app.set("view engine", "handlebars");
 
 export const productsDAO = new ProductManager(path.join(__dirname, "data", "products.json"));
 
-// rutas
+// endpoint de api 
+app.use("/api/products", BuildProductsRouter());
+//endpoint de vistas 
 app.use("/", buildViewsRouter(productsDAO));
 
 

@@ -1,14 +1,17 @@
 {
   "dependencies": {
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "express-handlebars": "^8.0.2",
+    "mongodb": "^6.20.0",
+    "mongoose": "^8.19.2",
+    "mongoose-paginate-v2": "^1.9.1",
     "socket.io": "^4.8.1"
   },
   "name": "tienda",
   "type": "module",
   "version": "1.0.0",
   "main": "index.js",
-  "devDependencies": {},
   "scripts": {
     "dev": "node ./app.js"
   },

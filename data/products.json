@@ -1,1 +1,13 @@
-[]
+[
+  {
+    "id": "60580be2-0690-48b6-a1af-85d561c7552b",
+    "title": "remera",
+    "description": "rosa",
+    "code": "1230",
+    "price": 5000,
+    "status": true,
+    "stock": 1,
+    "category": "ropa",
+    "thumbnails": []
+  }
+]
